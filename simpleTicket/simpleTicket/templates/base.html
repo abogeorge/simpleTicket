@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>simpleTicket</title>
+    {% load staticfiles %}
+
+    <link rel="shortcut icon" href="{% static "images/favicon.ico" %}">
+
+    <script type="text/javascript" language="javascript" src="{% static "scripts/chart/dygraph-combined.js" %}"></script>  <!-- charts -->
+    <script type="text/javascript" language="javascript" src="{% static "scripts/chart/dygraph-extra.js" %}"></script>     <!-- charts to images -->
+    <script type="text/javascript" language="javascript" src="{% static "scripts/jquery/jquery.min.js" %}"></script>       <!-- jQuery -->
+    <script type="text/javascript" language="javascript" src="{% static "scripts/bootstrap/bootstrap.min.js" %}"></script> <!-- bootstrap -->
+
+    <link rel="stylesheet" href="{% static "styles/bootstrap.min.css" %}"/>
+</head>
+<body>
+HI BASE!
+        <div id="content">
+           {% block content %}{% endblock %}
+       </div>
+</body>
+</html>
