@@ -20,23 +20,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '-5lii6@gqy3bl41u#$dc4hj2e!!vjk#yb%_!n@#en!j(+rpjx@'
+SECRET_KEY = 'o4nhz*%1wy=6dk^rh=g@-jc2*s6x2_wh%c(jodv*_a5qcshs3z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-#Resource Config
-MEDIA_ROOT = '/'
-MEDIA_URL = '/uploads/'
-STATIC_ROOT = 'd:/Abo/Disertatie/Work/simpleTicket/simpleTicket/simpleTicket/resources/'
-# Additional locations of static files
-STATICFILES_DIRS = (
-    ("scripts", "d:/Abo/Disertatie/Work/simpleTicket/simpleTicket/simpleTicket/resources/scripts"),
-    ("styles", "d:/Abo/Disertatie/Work/simpleTicket/simpleTicket/simpleTicket/resources/styles"),
-    ("fonts", "d:/Abo/Disertatie/Work/simpleTicket/simpleTicket/simpleTicket/resources/fonts"),
-    ("images", "d:/Abo/Disertatie/Work/simpleTicket/simpleTicket/simpleTicket/resources/images"),
-    ("data", "d:/Abo/Disertatie/Work/simpleTicket/simpleTicket/simpleTicket/resources/data"),
-)
 
 ALLOWED_HOSTS = []
 
@@ -50,8 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'simpleTicket',
-    'adminSite', # Admin Zone
+    'siteEngine'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -91,7 +77,7 @@ WSGI_APPLICATION = 'simpleTicket.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', 
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'simple-ticket-db',
         'USER': 'root',
         'PASSWORD': 'mysql1234',
@@ -99,6 +85,7 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
