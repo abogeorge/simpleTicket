@@ -25,6 +25,19 @@ SECRET_KEY = 'o4nhz*%1wy=6dk^rh=g@-jc2*s6x2_wh%c(jodv*_a5qcshs3z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+#Resource Config
+MEDIA_ROOT = '/'
+MEDIA_URL = '/uploads/'
+STATIC_ROOT = 'd:/Abo/Disertatie/Work/simpleTicket/simpleTicket/siteEngine/resources/'
+# Additional locations of static files
+STATICFILES_DIRS = (
+    ("scripts", "d:/Abo/Disertatie/Work/simpleTicket/simpleTicket/siteEngine/resources/scripts"),
+    ("styles", "d:/Abo/Disertatie/Work/simpleTicket/simpleTicket/siteEngine/resources/styles"),
+    ("fonts", "d:/Abo/Disertatie/Work/simpleTicket/simpleTicket/siteEngine/resources/fonts"),
+    ("images", "d:/Abo/Disertatie/Work/simpleTicket/simpleTicket/siteEngine/resources/images"),
+    ("data", "d:/Abo/Disertatie/Work/simpleTicket/simpleTicket/siteEngine/resources/data"),
+)
+
 ALLOWED_HOSTS = []
 
 
