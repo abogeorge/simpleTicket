@@ -1,11 +1,265 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% load staticfiles %}
 
-<div class="col-sm-8 text-center">
-    <br>
-    <br>
-    <h1>HI</h1>
-</div>
+    <section id="main-slider" class="no-margin">
+        <div class="carousel slide">
+            <ol class="carousel-indicators">
+                <li data-target="#main-slider" data-slide-to="0" class="active"></li>
+                <li data-target="#main-slider" data-slide-to="1"></li>
+                <li data-target="#main-slider" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active" style="background-image: url('{% static "images/slider/bg1.jpg" %}')">
+                    <div class="container">
+                        <div class="row slide-margin">
+                            <div class="col-sm-6">
+                                <div class="carousel-content">
+                                    <h1 class="animation animated-item-1">Are you having any problems with your IT equipment?</h1>
+                                    <h2 class="animation animated-item-2">If you are experiencing and problems with your software, hardware or telecom equipment, create an IT Ticket birefly describing your problem and you will be contacted in just a few minutes by one of our colleagues.</h2>
+<!-- TODO: Add Action -->
+                                    <a class="btn-slide animation animated-item-3" href="#">Create a Ticket!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+                <div class="item" style="background-image: url('{% static "images/slider/bg2.jpg" %}')">
+                    <div class="container">
+                        <div class="row slide-margin">
+                            <div class="col-sm-6">
+                                <div class="carousel-content">
+                                    <h1 class="animation animated-item-1">Do you need anything proccured for yourr office?</h1>
+                                    <h2 class="animation animated-item-2">If you need any item for your current project or any item to improve your life at the office please place an order and you will be contacted in just a few minutes by one of out colleagues.</h2>
+<!-- TODO: Add Action -->
+                                   <a class="btn-slide animation animated-item-3" href="#">Place an Order!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+
+                <div class="item" style="background-image: url('{% static "images/slider/bg3.jpg" %}')">
+                    <div class="container">
+                        <div class="row slide-margin">
+                            <div class="col-sm-6">
+                                <div class="carousel-content">
+                                    <h1 class="animation animated-item-1">Are you having difficulties creating a Ticket?</h1>
+                                    <h2 class="animation animated-item-2">If you need any assistance while creating an IT Ticket or placing any kind of order please contact our HelpDesk team.</h2>
+                                    <a class="btn-slide animation animated-item-3" href="#">Contact HelpDesk!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+        <a class="prev hidden-xs" href="#main-slider" data-slide="prev">
+            <i class="fa fa-chevron-left"></i>
+        </a>
+        <a class="next hidden-xs" href="#main-slider" data-slide="next">
+            <i class="fa fa-chevron-right"></i>
+        </a>
+    </section><!--/#main-slider-->
+
+    <section id="services" class="service-item">
+	   <div class="container">
+            <div class="center wow fadeInDown">
+                <h2>Our Services</h2>
+                <p class="lead">simpleTicket is a new self-service app that uses, role, and preferences to guide employees to the answers and tools they need here and now.</p>
+            </div>
+
+            <div class="row">
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="media services-wrap wow fadeInDown">
+                        <div class="pull-left">
+                            <img class="img-responsive" src="{% static "images/services/services1.png" %}" >
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">Saves Money</h3>
+                            <p>Cut support costs by deflecting level-one calls to the service desk.&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="media services-wrap wow fadeInDown">
+                        <div class="pull-left">
+                            <img class="img-responsive" src="{% static "images/services/services2.png" %}" >
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">Faster</h3>
+                            <p>Improve employee productivity by reducing time wasted on technology-related issues.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="media services-wrap wow fadeInDown">
+                        <div class="pull-left">
+                            <img class="img-responsive" src="{% static "images/services/services3.png" %}" >
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">Simple Access</h3>
+                            <p>Unify hardware, software, and services from multiple catalogs into one.&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="media services-wrap wow fadeInDown">
+                        <div class="pull-left">
+                            <img class="img-responsive" src="{% static "images/services/services4.png" %}" >
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">Modern</h3>
+                            <p>Modernize your business with formless requests, context-aware services and crowdsourced collaboration.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="media services-wrap wow fadeInDown">
+                        <div class="pull-left">
+                            <img class="img-responsive" src="{% static "images/services/services5.png" %}" >
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">Easy to use</h3>
+                            <p>Boost customer satisfaction with an amazing user experience. See how easy it is to use the application.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="media services-wrap wow fadeInDown">
+                        <div class="pull-left">
+                            <img class="img-responsive" src="{% static "images/services/services6.png" %}" >
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">24/7 Support</h3>
+                            <p>We provide on the clock assitance for any of your IT problems or any orders that may come up.</p>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.row-->
+        </div><!--/.container-->
+    </section><!--/#services-->
+
+    <section id="recent-works">
+        <div class="container">
+            <div class="center wow fadeInDown">
+                <h2>simpleTicket ... </h2>
+                <p class="lead">... makes the workplace a better place to work!</p>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="{% static "images/portfolio/recent/item1.png" %}" >
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><a href="#">simpleTicket</a> </h3>
+                                <p>&nbsp</p>
+                                <a class="preview" href="images/portfolio/full/item1.png" rel="prettyPhoto"><i class="fa fa-eye">View</i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="{% static "images/portfolio/recent/item2.png" %}" >
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><a href="#">simpleTicket</a> </h3>
+                                <p>&nbsp</p>
+                                <a class="preview" href="images/portfolio/full/item2.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="{% static "images/portfolio/recent/item3.png" %}" >
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><a href="#">simpleTicket</a> </h3>
+                                <p>&nbsp</p>
+                                <a class="preview" href="images/portfolio/full/item3.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="{% static "images/portfolio/recent/item4.png" %}" >
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><a href="#">simpleTicket</a> </h3>
+                                <p>&nbsp</p>
+                                <a class="preview" href="images/portfolio/full/item4.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="{% static "images/portfolio/recent/item5.png" %}" >
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><a href="#">simpleTicket</a> </h3>
+                                <p>&nbsp</p>
+                                <a class="preview" href="images/portfolio/full/item5.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="{% static "images/portfolio/recent/item6.png" %}" >
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><a href="#">simpleTicket</a> </h3>
+                                <p>&nbsp</p>
+                                <a class="preview" href="images/portfolio/full/item6.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="{% static "images/portfolio/recent/item7.png" %}" >
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><a href="#">simpleTicket</a> </h3>
+                                <p>&nbsp</p>
+                                <a class="preview" href="images/portfolio/full/item7.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="{% static "images/portfolio/recent/item8.png" %}" >
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><a href="#">simpleTicket</a> </h3>
+                                <p>&nbsp</p>
+                                <a class="preview" href="images/portfolio/full/item8.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.row-->
+        </div><!--/.container-->
+    </section><!--/#recent-works-->
 
 {% endblock %}
