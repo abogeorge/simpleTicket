@@ -16,6 +16,10 @@ Including another URLconf
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
+from django.conf.urls import handler404
+
+handler404 = 'siteEngine.views.handler404'
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^home/', include('siteEngine.urls', namespace='siteEngine', app_name='siteEngine')),
