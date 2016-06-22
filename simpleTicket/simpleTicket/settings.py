@@ -23,6 +23,7 @@ SECRET_KEY = 'o4nhz*%1wy=6dk^rh=g@-jc2*s6x2_wh%c(jodv*_a5qcshs3z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+#DEBUG = False
 
 #Resource Config
 MEDIA_ROOT = '/'

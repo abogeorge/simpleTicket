@@ -1,5 +1,8 @@
 from django.conf.urls import patterns, url
 from . import views
+from django.conf.urls import handler404
+
+handler404 = 'siteEngine.views.handler404'
 
 urlpatterns = [
   # Index Page
@@ -12,4 +15,5 @@ urlpatterns = [
   url(r'^myaccount/$', views.myaccount, name='myaccount'),
   # Contact View
   url(r'^contact/$', views.contact, name='contact'),
+
 ]

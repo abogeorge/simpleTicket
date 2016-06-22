@@ -1,10 +1,10 @@
 from django.shortcuts import render, render_to_response
-from django.http import HttpResponseRedirect
 from django.contrib import auth
 from django.core.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from .models import Ticket, UserProfile, Order
 from django.core.mail import send_mail
+from django.template import RequestContext
 
 # Home Page
 @login_required
@@ -80,3 +80,10 @@ def contact(request):
             return render(request, "contact.html", {'sent':False})
     else:
         return render(request, "contact.html")
+
+# 404 Handler
+def handler404(request):
+    print("\n\n\n\nMATA\n\n\n\n")
+    response = render_to_response('404.html', {}, context_instance=RequestContext(request))
+    response.status_code = 404
+    return response

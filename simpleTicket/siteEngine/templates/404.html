@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>simpleTicket</title>
+
+        {% load staticfiles %}
+
+    <link rel="shortcut icon" href="{% static "images/favicon.ico" %}"></link>
+
+    <script type="text/javascript" language="javascript" src="{% static "scripts/jquery/jquery.min.js" %}"></script>       <!-- jQuery -->
+    <script type="text/javascript" language="javascript" src="{% static "scripts/bootstrap/bootstrap.min.js" %}"></script> <!-- bootstrap -->
+    <script type="text/javascript" language="javascript" src="{% static "scripts/jquery/jquery.js" %}"></script>
+    <script type="text/javascript" language="javascript" src="{% static "scripts/jquery/jquery.prettyPhoto.js" %}"></script>
+    <script type="text/javascript" language="javascript" src="{% static "scripts/jquery/jquery.isotope.min.js" %}"></script>
+    <script type="text/javascript" language="javascript" src="{% static "scripts/jquery/jquery.isotope.min.js" %}"></script>
+    <script type="text/javascript" language="javascript" src="{% static "scripts/jquery/main.js" %}"></script>
+    <script type="text/javascript" language="javascript" src="{% static "scripts/jquery/wow.min.js" %}"></script>
+
+    <link rel="stylesheet" href="{% static "styles/bootstrap.min.css"%}"></link>
+    <link rel="stylesheet" href="{% static "styles/colorgraph.css" %}"></link>
+    <link rel="stylesheet" href="{% static "styles/font-awesome.min.css" %}"></link>
+    <link rel="stylesheet" href="{% static "styles/animate.min.css" %}"></link>
+    <link rel="stylesheet" href="{% static "styles/prettyPhoto.css" %}"></link>
+    <link rel="stylesheet" href="{% static "styles/main.css" %}"></link>
+    <link rel="stylesheet" href="{% static "styles/responsive.css" %}"></link>
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static "images/ico/apple-touch-icon-144-precomposed.png" %}"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static "images/ico/apple-touch-icon-114-precomposed.png" %}"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static "images/ico/apple-touch-icon-72-precomposed.png" %}"/>
+    <link rel="apple-touch-icon-precomposed" href="{% static "images/ico/apple-touch-icon-57-precomposed.png" %}"/>
+
+</head>
+
+<body class="homepage">
+
+    <header id="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-xs-4">
+                        <div class="top-number"><p><i class="fa fa-phone-square"></i> HelpDesk Quick Line: +4 (021) 000 555 </p></div>
+                    </div>
+                    <div class="col-sm-6 col-xs-8">
+                       <div class="social">
+                            <ul class="social-share">
+                                <li><a href="https://www.facebook.com/abordioaie.george"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://www.facebook.com/abordioaie.george"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://www.facebook.com/abordioaie.george"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="https://www.facebook.com/abordioaie.george"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="https://www.facebook.com/abordioaie.george"><i class="fa fa-skype"></i></a></li>
+                            </ul>
+                            <div class="search">
+                                <form role="form">
+                                    <input type="text" class="search-form" autocomplete="off" placeholder="Search">
+                                    <i class="fa fa-search"></i>
+                                </form>
+                           </div>
+                       </div>
+                    </div>
+                </div>
+            </div><!--/.container-->
+        </div><!--/.top-bar-->
+
+        <nav class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><img src="{% static "images/logo.png" %}" ></a>
+                </div>
+
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li><a href='/home/contact/'>Contact HelpDesk</a></li>
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+
+    </header><!--/header-->
+
+<body>
+<div class = "container">
+
+    <section id="error" class="container text-center">
+        <h1>404, Page not found</h1>
+        <p>The Page you are looking for doesn't exist or an other error occurred.</p>
+        <a class="btn btn-primary" href='/home/'>GO BACK TO THE HOMEPAGE</a>
+    </section><!--/#error-->
+
+</div>
+</body>
+</html>
