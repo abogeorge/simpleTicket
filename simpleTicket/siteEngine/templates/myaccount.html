@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}
+
+<section class="pricing-page">
+    <div class="container">
+        <div class="pricing-area text-center">
+                <br>
+                <div class="row">
+                    <div class="col-sm-1 plan price-one wow fadeInDown">
+                    </div>
+
+                    <div class="col-sm-10 plan price-one wow fadeInDown">
+                        <ul>
+                            <li class="heading-one">
+                                <h1>Personal Information</h1>
+                            </li>
+                            <li><b>First Name:</b> {{ user.first_name }}</li>
+                            <li><b>Last Name:</b> {{ user.last_name }}</li>
+                            <li><b>Supervisor:</b>
+                                {% if user_profile.supervisor_user != "" %}
+                                    {{ user_profile.supervisor_user }}
+                                {% elif user_profile.supervisor_user == "" %}
+                                    No supervisor stored!
+                                {% endif %}</li>
+                            <li><b>Department:</b> {{ user_profile.department }}</li>
+                            <li><b>Username:</b> {{ user.username }}</li>
+                            <li><b>Email:</b> {{ user.email }}</li>
+                            <li><b>Phone Number:</b> {{ user_profile.phone_number }}</li>
+                            <li><b>Date Joined:</b> {{ user.date_joined }}</li>
+                            <li class="plan-action">
+                                <a href='/home/logout/' class="btn btn-primary">Log Out</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-1 plan price-three wow fadeInDown">
+                    </div>
+                </div>
+        </div><!--/Personal Information area-->
+
+        <div class="pricing-area text-center">
+                <br>
+                <div class="row">
+                    <div class="col-sm-1 plan price-two wow fadeInDown">
+                    </div>
+
+                    <div class="col-sm-10 plan price-two wow fadeInDown">
+                        <ul>
+                            <li class="heading-two">
+                                <h1>Tickets</h1>
+                            </li>
+                             {% if tickets == False %}
+                                    <li>You have not created any tickets so far.</li>
+                             {% elif tickets != False %}
+                                <table class="table table-striped">
+                                    {% for ticket in tickets %}
+                                    <tr>
+                                        <td><b>Title: </b>{{ ticket.title }}</td>
+                                        <td><b>Desription: </b>{{ ticket.description }}</td>
+                                        <td><b>Priority: </b>
+                                            {% if ticket.priority == 0 %}
+                                                Low
+                                            {% endif %}
+                                            {% if ticket.priority == 1 %}
+                                                Medium
+                                            {% endif %}
+                                            {% if ticket.priority == 2 %}
+                                                High
+                                            {% endif %}
+                                        </td>
+                                        <td><b>Status: </b>
+                                            {% if ticket.status == 0 %}
+                                                Sent
+                                            {% endif %}
+                                            {% if ticket.status == 1 %}
+                                                Approved
+                                            {% endif %}
+                                            {% if ticket.status == 2 %}
+                                                Processing
+                                            {% endif %}
+                                            {% if ticket.status == 3 %}
+                                                Solved
+                                            {% endif %}
+                                            {% if ticket.status == 4 %}
+                                                Reopened
+                                            {% endif %}
+
+                                        </td>
+                                        <td><b>Comments: </b>{{ ticket.comments }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </table>
+                            {% endif %}
+                        </ul>
+                    </div>
+
+                    <div class="col-sm-1 plan price-three wow fadeInDown">
+                    </div>
+                </div>
+        </div><!--/Tickets Information area-->
+
+        <div class="pricing-area text-center">
+                <br>
+                <div class="row">
+                    <div class="col-sm-1 plan price-one three fadeInDown">
+                    </div>
+
+                    <div class="col-sm-10 plan price-three wow fadeInDown">
+                        <ul>
+                            <li class="heading-three">
+                                <h1>Orders</h1>
+                            </li>
+                            {% if orders == False %}
+                                    <li>You have not created any orders so far.</li>
+                                                          {% elif tickets != False %}
+                                <table class="table table-striped">
+                                    {% for order in orders %}
+                                    <tr>
+                                        <td><b>Title: </b>{{ order.title }}</td>
+                                        <td><b>Desription: </b>{{ order.description }}</td>
+                                        <td><b>Units: </b>{{ order.units }}</td>
+                                        <td><b>Status: </b>
+                                            {% if order.status == 0 %}
+                                                Sent
+                                            {% endif %}
+                                            {% if order.status == 1 %}
+                                                Approved
+                                            {% endif %}
+                                            {% if order.status == 2 %}
+                                                Processing
+                                            {% endif %}
+                                            {% if order.status == 3 %}
+                                                Solved
+                                            {% endif %}
+                                            {% if order.status == 4 %}
+                                                Reopened
+                                            {% endif %}
+
+                                        </td>
+                                        <td><b>Comments: </b>{{ order.comments }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </table>
+                            {% endif %}
+                        </ul>
+                    </div>
+
+                    <div class="col-sm-1 plan price-three wow fadeInDown">
+                    </div>
+                </div>
+        </div><!--/Tickets Information area-->
+
+
+    </div><!--/container-->
+</section><!--/pricing-page-->
+
+{% endblock %}

@@ -11,15 +11,9 @@ class Role(models.Model):
 
 # User Class
 class UserProfile(models.Model):
-    user_auth = models.ForeignKey(User, unique=True, on_delete=models.CASCADE)
+    user_auth = models.OneToOneField(User, on_delete=models.CASCADE)
     supervisor_user = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
     role = models.ForeignKey('Role', on_delete=models.CASCADE)
-    # already defined by Auth_User
-    ##first_name = models.CharField(max_length=50)
-    #last_name = models.CharField(max_length=50)
-    #email = models.EmailField(max_length=100)
-    #username = models.CharField(max_length=50)
-    #password = models.CharField(max_length=50)
     phone_number = models.CharField(max_length=50)
     department = models.CharField(max_length=50)
     def __unicode__(self):
@@ -42,6 +36,8 @@ class Ticket(models.Model):
     priority = models.IntegerField(default=0)
     # 0 - sent; 1 - approved; 2 - processing; 3 - solved; 4 - reopened
     status = models.IntegerField(default=0)
+    def __unicode__(self):
+       return self.title
 
 # Order Type Class
 class OrderType(models.Model):

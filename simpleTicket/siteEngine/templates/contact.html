@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}
+
+ <section id="contact-info">
+        <br>
+        <!-- Alerts -->
+        {% if sent == True %}
+        <div class="alert alert-success alert-dismissible" id='alert_success' role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <p class="text-center">Your message has been successfully sent!</p>
+         </div>
+        {% elif sent == False %}
+        <div class="alert alert-danger alert-dismissible" id='alert_fail' role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <p class="text-center">Your message could not be sent! Please try again!</p>
+        </div>
+        {% endif %}
+     <br>
+     <div class="center">
+            <h2>Contact the HelpDesk Team</h2>
+            <p class="lead">HelpDesk Quick Line: <b>+4 (021) 000 555</b></p>
+     </div>
+    <hr>
+     <br>
+    <section id="contact-page">
+        <div class="container">
+            <div class="center">
+                <h2>Send an e-mail</h2>
+            </div>
+            <div class="row contact-wrap">
+                <div class="status alert alert-success" style="display: none"></div>
+                <form action="/home/contact/" method="post" name="contact-form" class="contact-form"> {% csrf_token %}
+                    <div class="col-sm-5 col-sm-offset-1">
+                        <div class="form-group">
+                            <label>Name *</label>
+                            <input type="text" id="name" name="name" class="form-control" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" id="email" name="email" class="form-control" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="number" id="phone" name="phone" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Company Name</label>
+                            <input type="text" id="company_name" name="company_name" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label>Subject *</label>
+                            <input type="text" name="subject" id="subject" class="form-control" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label>Message *</label>
+                            <textarea name="message" id="message" name="message" required="required" class="form-control" rows="8"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" name="submit" class="btn btn-primary btn-lg" required="required">Submit Message</button>
+                        </div>
+                    </div>
+                </form>
+            </div><!--/.row-->
+        </div><!--/.container-->
+    </section><!--/#contact-page-->
+     <hr>
+     <br>
+      <div class="gmap-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-5 text-center">
+                        <div class="gmap">
+                            <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=JoomShaper,+Dhaka,+Dhaka+Division,+Bangladesh&amp;aq=0&amp;oq=joomshaper&amp;sll=37.0625,-95.677068&amp;sspn=42.766543,80.332031&amp;ie=UTF8&amp;hq=JoomShaper,&amp;hnear=Dhaka,+Dhaka+Division,+Bangladesh&amp;ll=23.73854,90.385504&amp;spn=0.001515,0.002452&amp;t=m&amp;z=14&amp;iwloc=A&amp;cid=1073661719450182870&amp;output=embed"></iframe>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-7 map-content">
+                        <ul class="row">
+                            <li class="col-sm-6">
+                                <address>
+                                    <h5>Head Office</h5>
+                                    <p>2nd Muntisor Street <br>
+                                    Codlea, 505100</p>
+                                    <p>Phone: +4 (0268) 259 782 <br>
+                                    Email Address: abordioaie.george@yahoo.com</p>
+                                </address>
+                                <address>
+                                    <h5>Admin Office</h5>
+                                    <p>1537 Admin Street <br>
+                                    Brasov, 969011</p>
+                                    <p>Phone: +4 (0268) 259 782 <br>
+                                    Email Address:admin@simpleticket.com</p>
+                                </address>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>  <!--/gmap_area -->
+
+{% endblock %}
