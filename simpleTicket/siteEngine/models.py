@@ -55,5 +55,7 @@ class Order(models.Model):
     value_per_unit = models.DecimalField(max_digits=10, decimal_places=2)
     units = models.IntegerField(default=1)
     delivery_office = models.CharField(max_length=50)
+    # 0 - low priority; 1 - medium; 2 - high
+    priority = models.IntegerField(default=0)
     # 0 - sent; 1 - approved; 2 - processing; 3 - solved; 4 - reopened
     status = models.IntegerField(default=0)

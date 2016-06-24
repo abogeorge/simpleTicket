@@ -14,6 +14,12 @@ urlpatterns = [
   url(r'^contact/$', views.contact, name='contact'),
   # Services Page
   url(r'^services/$', views.services, name='services'),
-  #Create Ticket
+  # Create Ticket
   url(r'^ticketcreate/$', views.create_ticket, name='create_ticket'),
+  # View Active Tickets
+  url(r'^ticketsactive/$', views.active_tickets, name='active_tickets'),
+  # View Closed Tickets
+  url(r'^ticketsclosed/$', views.closed_tickets, name='closed_tickets'),
+  # Create Order
+  url(r'^ordercreate/$', views.create_order, name='create_order'),
 ]

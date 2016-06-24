@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}
+
+<script>
+    function backToServices() {
+        window.location.href = '/home/services/'
+    }
+</script>
+
+<script>
+    function reopenTicket() {
+
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/home/ticketsclosed/");
+
+        var selected_values = [];
+        $("input:checkbox[name=checks]:checked").each(function(){
+            selected_values.push($(this).val());
+        });
+
+        cookie_val = "";
+        if(selected_values.length > 0)
+        {
+            for (i = 0; i < selected_values.length; i++)
+                cookie_val += selected_values[i] + "|";
+        }
+        else
+        {
+            alert("Please select at least a value from the table!");
+            return;
+        }
+        form.setAttribute("selected_tickets", cookie_val);
+
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>
+
+<link rel="stylesheet" href="{% static "styles/jquery.dataTables.min.css" %}">
+<script type="text/javascript" language="javascript" src="{% static "scripts/jquery/jquery.dataTables.min.js" %}"></script>
+
+<section class="pricing-page">
+        <br>
+        <!-- Alerts -->
+        {% if sent == True %}
+        <div class="alert alert-success alert-dismissible" id='alert_success' role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <p class="text-center">Ticket successfully reopened! You will be contacted as soon as possible.</p>
+         </div>
+        {% elif sent == False %}
+        <div class="alert alert-danger alert-dismissible" id='alert_fail' role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <p class="text-center">{{ fail_message }}</p>
+        </div>
+        {% endif %}
+    <div class="container">
+        <div class="pricing-area text-center">
+
+                <br>
+                <div class="row">
+                    <div class="col-sm-12 plan price-three wow fadeInDown">
+                        <ul>
+                            <li class="heading-three">
+                                <h1>Closed Tickets for {{ user_profile }}</h1>
+                            </li>
+                             {% if tickets == False %}
+                                    <li>You have not created any tickets so far.</li></ul>
+                             {% elif tickets != False %}
+                                </ul>
+                                <br>
+                                <form action="/home/ticketsclosed/" method="post" name="contact-form" class="contact-form"> {% csrf_token %}
+                                <div class="table-responsive">
+                                <table class="table table-striped" cellspacing="0" width="100%" align="center" id="data_table">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align:center;vertical-align:middle">Title</th>
+                                            <th style="text-align:center;vertical-align:middle">Description</th>
+                                            <th style="text-align:center;vertical-align:middle">Comments</th>
+                                            <th style="text-align:center;vertical-align:middle">Priority</th>
+                                            <th style="text-align:center;vertical-align:middle">Reopen</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for ticket in tickets %}
+                                    <tr>
+                                        <td>{{ ticket.title }}</td>
+                                        <td>{{ ticket.description }}</td>
+                                        <td>{{ ticket.comments }}</td>
+                                        <td>
+                                            {% if ticket.priority == 0 %}
+                                                Low
+                                            {% endif %}
+                                            {% if ticket.priority == 1 %}
+                                                Medium
+                                            {% endif %}
+                                            {% if ticket.priority == 2 %}
+                                                High
+                                            {% endif %}
+                                        </td>
+                                        <td><input id="checks" type="checkbox" name="checks" value="{{ ticket.id }}"></td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                                </div>
+                            {% endif %}
+                    </div>
+                </div>
+                <div class="form-group">
+                     <button type="submit" name="submit" class="btn btn-primary btn-lg" required="required">Reopen Ticket</button>&nbsp&nbsp&nbsp
+                    &nbsp&nbsp
+                    <a class="btn btn-primary btn-lg" id="id_services" role="button" onclick="backToServices()">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCancel&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                </div>
+                </form>
+        </div><!--/Tickets Information area-->
+    </div><!--/container-->
+</section><!--/pricing-page-->
+
+{% endblock %}
