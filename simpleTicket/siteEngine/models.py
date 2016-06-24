@@ -21,8 +21,8 @@ class UserProfile(models.Model):
 
 # Ticket Type Class
 class TicketType(models.Model):
-    # 0 - hardware problem; 1 - software; 2 - telecom; 3 - other problem
-    ticket_type = models.IntegerField(default=0)
+    # 1 - hardware problem; 2 - software; 3 - telecom; 4 - other problem
+    #ticket_type = models.IntegerField(default=0)
     ticket_description = models.CharField(max_length=100)
 
 # Ticket Class
@@ -41,8 +41,8 @@ class Ticket(models.Model):
 
 # Order Type Class
 class OrderType(models.Model):
-    # 0 - inventory item; 1 - project necessity; 2 - raw material; 3 - other
-    order_type = models.IntegerField(default=1)
+    # 1 - inventory item; 2 - project necessity; 3 - raw material; 4 - other
+    #order_type = models.IntegerField(default=1)
     order_description = models.CharField(max_length=100)
 
 # Order Class

@@ -2,7 +2,7 @@ from django.shortcuts import render, render_to_response
 from django.contrib import auth
 from django.core.context_processors import csrf
 from django.contrib.auth.decorators import login_required
-from .models import Ticket, UserProfile, Order
+from .models import Ticket, UserProfile, Order, TicketType
 from django.core.mail import send_mail
 from django.template import RequestContext
 
@@ -38,8 +38,6 @@ def logout(request):
 def myaccount(request):
     # User Auth object
     user = request.user
-    tickets = []
-    orders = []
     # Retrieving User
     try:
         user_profile = user.userprofile
@@ -83,11 +81,58 @@ def contact(request):
 
 # 404 Handler
 def handler404(request):
-    print("\n\n\n\nMATA\n\n\n\n")
     response = render_to_response('404.html', {}, context_instance=RequestContext(request))
     response.status_code = 404
     return response
 
 # Services Page
+@login_required
 def services(request):
     return render(request, "services.html")
+
+# Create a Ticket Page
+@login_required
+def create_ticket(request):
+    if request.method == "POST":
+        # Validation Flag
+        valid = True
+        # Collecting Form Data
+        title = request.POST.get("title")
+        valid = __validateMinCharLength(title)
+        description = request.POST.get("description")
+        priority = request.POST.get("priority")
+        type = request.POST.get("type")
+        # Retrieving Ticket Type
+        try:
+            ticket_type = TicketType.objects.get(pk=int(type))
+        except TicketType.DoesNotExist:
+            valid = False
+        # Retrieving User Profile
+        user = request.user
+        try:
+            user_profile = user.userprofile
+        except UserProfile.DoesNotExist:
+            valid = False
+        if valid is True:
+            ticket = Ticket.objects.create(
+                title = title,
+                description = description,
+                comments = "-",
+                priority = int(priority),
+                status = 0,
+                ticket_type = ticket_type,
+                user_type = user_profile
+            )
+            return render(request, "ticketcreate.html", {'sent':True})
+        else:
+            fail_message = "Invalid data provided, please try again! The title of the ticket must be at least 5 characters long."
+            return render(request, "ticketcreate.html", {'sent':False, 'fail_message':fail_message})
+    else:
+        return render(request, "ticketcreate.html")
+
+# Checks if the
+def __validateMinCharLength(field):
+    if len(field) >= 5:
+        return True
+    else:
+        return False

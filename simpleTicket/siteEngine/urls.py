@@ -8,10 +8,12 @@ urlpatterns = [
   url(r'^login/$', views.login, name='login'),
   url(r'^login_auth/$', views.login_auth, name="login_auth"),
   url(r'^logout/$', views.logout, name='logout'),
-  # Account Information View
+  # Account Information
   url(r'^myaccount/$', views.myaccount, name='myaccount'),
-  # Contact View
+  # Contact Page
   url(r'^contact/$', views.contact, name='contact'),
-  # Services View
+  # Services Page
   url(r'^services/$', views.services, name='services'),
+  #Create Ticket
+  url(r'^ticketcreate/$', views.create_ticket, name='create_ticket'),
 ]

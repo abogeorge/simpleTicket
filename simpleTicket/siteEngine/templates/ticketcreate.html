@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}
+
+ <section id="contact-info">
+        <br>
+        <!-- Alerts -->
+        {% if sent == True %}
+        <div class="alert alert-success alert-dismissible" id='alert_success' role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <p class="text-center">Ticket successfully created! You will be contacted as soon as possible.</p>
+         </div>
+        {% elif sent == False %}
+        <div class="alert alert-danger alert-dismissible" id='alert_fail' role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <p class="text-center">{{ fail_message }}</p>
+        </div>
+        {% endif %}
+     <br>
+     <div class="center">
+            <h2>Create a Ticket</h2>
+            <p class="lead">If you are experiencing any problems with your software, hardware or telecom equipment, create an IT Ticket birefly describing your problem</b></p>
+     </div>
+    <section id="contact-page">
+        <div class="container">
+            <div class="row contact-wrap">
+                <div class="status alert alert-success" style="display: none"></div>
+                <div class="col-sm-1"></div>
+                <form action="/home/ticketcreate/" method="post" name="contact-form" class="contact-form"> {% csrf_token %}
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <div class="form-group">
+                            <label><b>Category:&nbsp&nbsp&nbsp&nbsp</b></label>
+                            <select id="type" name="type">
+                                <option value="1" selected="selected">Hardware Problem</option>
+                                <option value="2">Software Problem</option>
+                                <option value="3">Telecom Problem</option>
+                                <option value="4">Other Problem</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><b>Title:</b></label>
+                            <input type="text" id="title" name="title" class="form-control" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label><b>Additional Information:</b></label>
+                            <textarea id="description" name="description" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label><b>Priority:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b></label>
+                            <select id="priority" name="priority">
+                                <option value="0" selected="selected">Low Priority</option>
+                                <option value="1">Medium Priority</option>
+                                <option value="2">High Priority</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" name="submit" class="btn btn-primary btn-lg" required="required">Submit Ticket</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="col-sm-1"></div>
+            </div><!--/.row-->
+        </div><!--/.container-->
+    </section><!--/#contact-page-->
+ </section>
+
+{% endblock %}
