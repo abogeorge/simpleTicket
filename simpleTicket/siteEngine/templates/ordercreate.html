@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}
+
+<script>
+    function backToServices() {
+        window.location.href = '/home/services/'
+    }
+</script>
+
+ <section id="contact-info">
+        <br>
+        <!-- Alerts -->
+        {% if sent == True %}
+        <div class="alert alert-success alert-dismissible" id='alert_success' role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <p class="text-center">Order successfully created! You will be contacted as soon as possible.</p>
+         </div>
+        {% elif sent == False %}
+        <div class="alert alert-danger alert-dismissible" id='alert_fail' role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <p class="text-center">{{ fail_message }}</p>
+        </div>
+        {% endif %}
+     <br>
+     <div class="center">
+            <h2>Place an Order</h2>
+            <p class="lead">If you need any item for your current project or any item to improve your life at the office please place an order</b></p>
+     </div>
+    <section id="contact-page">
+        <div class="container">
+            <div class="row contact-wrap">
+                <div class="status alert alert-success" style="display: none"></div>
+                <div class="col-sm-1"></div>
+                <form action="/home/ordercreate/" method="post" name="contact-form" class="contact-form"> {% csrf_token %}
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <div class="form-group">
+                            <label><b>Category:&nbsp&nbsp&nbsp&nbsp</b></label>
+                            <select id="type" name="type">
+                                <option value="1" selected="selected">Inventory Item</option>
+                                <option value="2">Project Necessity</option>
+                                <option value="3">Raw Material</option>
+                                <option value="4">Other Order</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><b>Title:</b></label>
+                            <input type="text" id="title" name="title" class="form-control" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label><b>Additional Information:</b></label>
+                            <textarea id="description" name="description" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label><b>Value/Unit:</b></label>
+                            <input type="text" id="value" name="value" class="form-control" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label><b>Units Required:</b></label>
+                            <input type="number" id="units" name="units" class="form-control" required="required" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label><b>Delivery Office:</b></label>
+                            <input type="text" id="delivery_office" name="delivery_office" class="form-control" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label><b>Priority:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b></label>
+                            <select id="priority" name="priority">
+                                <option value="0" selected="selected">Low Priority</option>
+                                <option value="1">Medium Priority</option>
+                                <option value="2">High Priority</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" name="submit" class="btn btn-primary btn-lg" required="required">Place Order</button>&nbsp&nbsp&nbsp
+                            <a class="btn btn-primary btn-lg" id="id_services" role="button" onclick="backToServices()">&nbsp&nbsp&nbsp&nbsp&nbspCancel&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                        </div>
+                    </div>
+                </form>
+                <div class="col-sm-1"></div>
+            </div><!--/.row-->
+        </div><!--/.container-->
+    </section><!--/#contact-page-->
+ </section>
+
+{% endblock %}

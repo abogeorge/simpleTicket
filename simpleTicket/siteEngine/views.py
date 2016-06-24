@@ -99,7 +99,7 @@ def create_ticket(request):
         # Collecting Form Data
         title = request.POST.get("title")
         valid = __validateMinCharLength(title)
-        description = request.POST.get("description")
+        description = request.POST.get("description", "-")
         priority = request.POST.get("priority")
         type = request.POST.get("type")
         # Retrieving Ticket Type
@@ -192,16 +192,18 @@ def create_order(request):
         # Collecting Form Data
         title = request.POST.get("title")
         valid = __validateMinCharLength(title)
-        description = request.POST.get("description")
+        description = request.POST.get("description", "-")
+        # TODO: check value
         value = request.POST.get("value")
+        # TODO: check units
         units = request.POST.get("units")
         delivery_office = request.POST.get("delivery_office")
         priority = request.POST.get("priority")
         type = request.POST.get("type")
         # Retrieving Ticket Type
         try:
-            ticket_type = TicketType.objects.get(pk=int(type))
-        except TicketType.DoesNotExist:
+            order_type = OrderType.objects.get(pk=int(type))
+        except OrderType.DoesNotExist:
             valid = False
         # Retrieving User Profile
         user = request.user
@@ -210,18 +212,22 @@ def create_order(request):
         except UserProfile.DoesNotExist:
             valid = False
         if valid is True:
-            ticket = Ticket.objects.create(
+            order = Order.objects.create(
                 title = title,
                 description = description,
                 comments = "-",
-                priority = int(priority),
+                value_per_unit = value,
+                units = units,
+                delivery_office = delivery_office,
                 status = 0,
-                ticket_type = ticket_type,
+                priority = int(priority),
+                order_type = order_type,
                 user_type = user_profile
+
             )
-            return render(request, "ticketcreate.html", {'sent':True})
+            return render(request, "ordercreate.html", {'sent':True})
         else:
-            fail_message = "Invalid data provided, please try again! The title of the ticket must be at least 5 characters long."
-            return render(request, "ticketcreate.html", {'sent':False, 'fail_message':fail_message})
+            fail_message = "Invalid data provided, please try again! The title of the order must be at least 5 characters long."
+            return render(request, "ordercreate.html", {'sent':False, 'fail_message':fail_message})
     else:
-        return render(request, "ticketcreate.html")
+        return render(request, "ordercreate.html")
