@@ -265,3 +265,17 @@ def __validateUnits(units):
         if units > 0:
             return True
     return False
+
+# Active Orders
+@login_required
+def active_orders(request):
+    # Validation Flag
+    valid = True
+    # Retrieving User Profile
+    user = request.user
+    user_profile = user.userprofile
+    # Retrieving Orders
+    orders = Order.objects.filter(user_type = user_profile).exclude(status = 3)
+    if len(orders) == 0:
+        orders = False
+    return render(request, "ordersactive.html", {'user':user, 'user_profile':user_profile, 'orders':orders})
