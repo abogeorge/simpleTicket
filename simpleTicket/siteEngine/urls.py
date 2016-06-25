@@ -24,4 +24,6 @@ urlpatterns = [
   url(r'^ordercreate/$', views.create_order, name='create_order'),
   # View Active Orders
   url(r'^ordersactive/$', views.active_orders, name='active_orders'),
+  # View Closed Orders
+  url(r'^ordersclosed/$', views.closed_orders, name='closed_orders'),
 ]

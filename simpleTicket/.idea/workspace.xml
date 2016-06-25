@@ -37,8 +37,8 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/siteEngine/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
-              <caret line="25" column="2" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+              <caret line="27" column="65" selection-start-line="27" selection-start-column="65" selection-end-line="27" selection-end-column="65" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
               </folding>
@@ -49,8 +49,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/siteEngine/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="1343">
-              <caret line="281" column="0" selection-start-line="281" selection-start-column="0" selection-end-line="281" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="792" max-vertical-offset="1700">
+              <caret line="303" column="58" selection-start-line="303" selection-start-column="49" selection-end-line="303" selection-end-column="58" />
               <folding>
                 <element signature="e#0#55#0" expanded="true" />
                 <element signature="e#399#435#0" expanded="false" />
@@ -68,26 +68,17 @@
                 <element signature="e#6546#9345#0" expanded="false" />
                 <element signature="e#9450#9543#0" expanded="false" />
                 <element signature="e#9663#9752#0" expanded="false" />
+                <element signature="e#9818#10203#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="services.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/siteEngine/templates/services.html">
+      <file leaf-file-name="ordersclosed.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/siteEngine/templates/ordersclosed.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-34.0" vertical-offset="0" max-vertical-offset="1513">
-              <caret line="52" column="55" selection-start-line="52" selection-start-column="55" selection-end-line="52" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ordersactive.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/siteEngine/templates/ordersactive.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.53968257" vertical-offset="102" max-vertical-offset="1683">
-              <caret line="34" column="68" selection-start-line="34" selection-start-column="68" selection-end-line="34" selection-end-column="68" />
+            <state vertical-scroll-proportion="0.69161" vertical-offset="699" max-vertical-offset="1734">
+              <caret line="77" column="108" selection-start-line="77" selection-start-column="108" selection-end-line="77" selection-end-column="108" />
               <folding />
             </state>
           </provider>
@@ -131,10 +122,11 @@
         <option value="$PROJECT_DIR$/siteEngine/templates/index.html" />
         <option value="$PROJECT_DIR$/siteEngine/templates/ordercreate.html" />
         <option value="$PROJECT_DIR$/siteEngine/templates/myaccount.html" />
+        <option value="$PROJECT_DIR$/siteEngine/templates/ordersactive.html" />
         <option value="$PROJECT_DIR$/siteEngine/urls.py" />
         <option value="$PROJECT_DIR$/siteEngine/templates/services.html" />
         <option value="$PROJECT_DIR$/siteEngine/views.py" />
-        <option value="$PROJECT_DIR$/siteEngine/templates/ordersactive.html" />
+        <option value="$PROJECT_DIR$/siteEngine/templates/ordersclosed.html" />
       </list>
     </option>
   </component>
@@ -437,19 +429,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="9" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/siteEngine/templates/services.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="593" max-vertical-offset="1496">
-          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/simpleTicket/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="2516">
@@ -478,6 +462,7 @@
             <element signature="e#6546#9345#0" expanded="false" />
             <element signature="e#9450#9543#0" expanded="false" />
             <element signature="e#9663#9752#0" expanded="false" />
+            <element signature="e#9818#10203#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -541,6 +526,7 @@
             <element signature="e#6546#9345#0" expanded="false" />
             <element signature="e#9450#9543#0" expanded="false" />
             <element signature="e#9663#9752#0" expanded="false" />
+            <element signature="e#9818#10203#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -621,6 +607,7 @@
             <element signature="e#6546#9345#0" expanded="false" />
             <element signature="e#9450#9543#0" expanded="false" />
             <element signature="e#9663#9752#0" expanded="false" />
+            <element signature="e#9818#10203#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -691,6 +678,7 @@
             <element signature="e#6546#9345#0" expanded="false" />
             <element signature="e#9450#9543#0" expanded="false" />
             <element signature="e#9663#9752#0" expanded="false" />
+            <element signature="e#9818#10203#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -807,13 +795,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/siteEngine/templates/ticketsclosed.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5010917" vertical-offset="595" max-vertical-offset="2176">
-          <caret line="62" column="20" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/siteEngine/templates/ticketcreate.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.27838427" vertical-offset="0" max-vertical-offset="1394">
@@ -846,16 +827,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/siteEngine/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
-          <caret line="25" column="2" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/siteEngine/templates/ticketsactive.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.21088435" vertical-offset="1" max-vertical-offset="1615">
@@ -872,10 +843,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/siteEngine/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+          <caret line="27" column="65" selection-start-line="27" selection-start-column="65" selection-end-line="27" selection-end-column="65" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/siteEngine/templates/ticketsclosed.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.52040815" vertical-offset="595" max-vertical-offset="2176">
+          <caret line="62" column="20" selection-start-line="0" selection-start-column="0" selection-end-line="122" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/siteEngine/templates/services.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47959185" vertical-offset="614" max-vertical-offset="1496">
+          <caret line="61" column="55" selection-start-line="61" selection-start-column="55" selection-end-line="61" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/siteEngine/templates/ordersactive.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.692307" vertical-offset="486" max-vertical-offset="1683">
+          <caret line="48" column="75" selection-start-line="47" selection-start-column="40" selection-end-line="48" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/siteEngine/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="1343">
-          <caret line="281" column="0" selection-start-line="281" selection-start-column="0" selection-end-line="281" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="792" max-vertical-offset="1700">
+          <caret line="303" column="58" selection-start-line="303" selection-start-column="49" selection-end-line="303" selection-end-column="58" />
           <folding>
             <element signature="e#0#55#0" expanded="true" />
             <element signature="e#399#435#0" expanded="false" />
@@ -893,22 +898,15 @@
             <element signature="e#6546#9345#0" expanded="false" />
             <element signature="e#9450#9543#0" expanded="false" />
             <element signature="e#9663#9752#0" expanded="false" />
+            <element signature="e#9818#10203#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/siteEngine/templates/services.html">
+    <entry file="file://$PROJECT_DIR$/siteEngine/templates/ordersclosed.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-34.0" vertical-offset="0" max-vertical-offset="1513">
-          <caret line="52" column="55" selection-start-line="52" selection-start-column="55" selection-end-line="52" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/siteEngine/templates/ordersactive.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53968257" vertical-offset="102" max-vertical-offset="1683">
-          <caret line="34" column="68" selection-start-line="34" selection-start-column="68" selection-end-line="34" selection-end-column="68" />
+        <state vertical-scroll-proportion="0.69161" vertical-offset="699" max-vertical-offset="1734">
+          <caret line="77" column="108" selection-start-line="77" selection-start-column="108" selection-end-line="77" selection-end-column="108" />
           <folding />
         </state>
       </provider>

@@ -279,3 +279,35 @@ def active_orders(request):
     if len(orders) == 0:
         orders = False
     return render(request, "ordersactive.html", {'user':user, 'user_profile':user_profile, 'orders':orders})
+
+# Closed Tickets
+@login_required
+def closed_orders(request):
+    # Validation Flag
+    valid = True
+    # Retrieving User Profile
+    user = request.user
+    user_profile = user.userprofile
+    # Retrieving Orders
+    orders = Order.objects.filter(user_type = user_profile).filter(status = 3)
+    if len(orders) == 0:
+        orders = False
+
+    if request.method == "POST":
+        selected = request.POST.getlist("checks")
+        if len(selected) == 0:
+            fail_message = "You must select at least one value from the table!"
+            return render(request, "ordersclosed.html", {'user':user, 'user_profile':user_profile, 'orders':orders, 'sent':False, 'fail_message':fail_message})
+        else:
+            # Updating selected orders
+            for sel_order in selected:
+                order = Order.objects.get(pk=int(sel_order))
+                order.status = 4
+                order.save(update_fields=['status'])
+            # Re-Retrieving Tickets to refresh list
+            orders = Order.objects.filter(user_type = user_profile).filter(status = 3)
+            if len(orders) == 0:
+                orders = False
+            return render(request, "ordersclosed.html", {'user':user, 'user_profile':user_profile, 'orders':orders, 'sent':True})
+    else:
+        return render(request, "ordersclosed.html", {'user':user, 'user_profile':user_profile, 'orders':orders})
