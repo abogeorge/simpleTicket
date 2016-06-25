@@ -69,7 +69,6 @@
                                                 High
                                             {% endif %}
                                         </td>
-                                                                                <td><b>Comments: </b>{{ ticket.comments }}</td>
                                         <td><b>Status: </b>
                                             {% if ticket.status == 0 %}
                                                 Sent
@@ -120,7 +119,17 @@
                                         <td><b>Title: </b>{{ order.title }}</td>
                                         <td><b>Desription: </b>{{ order.description }}</td>
                                         <td><b>Units: </b>{{ order.units }}</td>
-                                        <td><b>Comments: </b>{{ order.comments }}</td>
+                                        <td><b>Priority: </b>
+                                            {% if order.priority == 0 %}
+                                                Low
+                                            {% endif %}
+                                            {% if order.priority == 1 %}
+                                                Medium
+                                            {% endif %}
+                                            {% if order.priority == 2 %}
+                                                High
+                                            {% endif %}
+                                        </td>
                                         <td><b>Status: </b>
                                             {% if order.status == 0 %}
                                                 Sent

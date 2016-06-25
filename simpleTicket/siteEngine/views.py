@@ -187,16 +187,35 @@ def closed_tickets(request):
 @login_required
 def create_order(request):
     if request.method == "POST":
-        # Validation Flag
+        # Validation Flag, if any of the validations are failing, the flag receives the False value
         valid = True
         # Collecting Form Data
         title = request.POST.get("title")
         valid = __validateMinCharLength(title)
+        if valid == False:
+            fail_message = "Invalid data provided, please try again! The title of the order must be at least 5 " \
+                           "characters long."
+            return render(request, "ordercreate.html", {'sent':False, 'fail_message':fail_message})
         description = request.POST.get("description", "-")
-        # TODO: check value
-        value = request.POST.get("value")
-        # TODO: check units
-        units = request.POST.get("units")
+        # Converting and validating value
+        value_str = request.POST.get("value")
+        value = 0.0
+        try:
+            value = float(value_str)
+        except ValueError:
+            valid = False
+        valid = __validateValue(value)
+        if valid == False:
+            fail_message = "Invalid data provided, please try again! The price must be a numerical value greater than 0.0."
+            return render(request, "ordercreate.html", {'sent':False, 'fail_message':fail_message})
+        # Converting and validating units
+        units_str = request.POST.get("units")
+        units = 0
+        try:
+            units = int(units_str)
+        except ValueError:
+            valid = False
+        valid = __validateUnits(units)
         delivery_office = request.POST.get("delivery_office")
         priority = request.POST.get("priority")
         type = request.POST.get("type")
@@ -227,7 +246,22 @@ def create_order(request):
             )
             return render(request, "ordercreate.html", {'sent':True})
         else:
-            fail_message = "Invalid data provided, please try again! The title of the order must be at least 5 characters long."
+            fail_message = "Invalid data provided, please try again! The title of the order must be at least 5 " \
+                           "characters long and the price must be a numerical value greater than 0.0."
             return render(request, "ordercreate.html", {'sent':False, 'fail_message':fail_message})
     else:
         return render(request, "ordercreate.html")
+
+# validates that the value provided by the user is a float value above 0
+def __validateValue(value):
+    if isinstance(value, float):
+        if value > 0.0:
+            return True
+    return False
+
+# validates that the number of units provided by the user is an integer value above 0
+def __validateUnits(units):
+    if isinstance(units, int):
+        if units > 0:
+            return True
+    return False
