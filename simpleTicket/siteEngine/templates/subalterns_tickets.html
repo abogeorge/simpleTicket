@@ -37,6 +37,7 @@
                                             <th style="text-align:center;vertical-align:middle">Comments</th>
                                             <th style="text-align:center;vertical-align:middle">Priority</th>
                                             <th style="text-align:center;vertical-align:middle">Status</th>
+                                            <th style="text-align:center;vertical-align:middle">Approve or Close</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -73,6 +74,13 @@
                                             {% if ticket.status == 4 %}
                                                 Reopened
                                             {% endif %}
+                                        </td>
+                                        <td>
+                                            <form method="post">
+                                            {{ form.as_p }}
+                                            {% csrf_token %}
+                                            <button id="{{ ticket.id }}" name={{ ticket.id }} type="submit" class="btn btn-primary">Edit Status</button>
+                                            </form>
                                         </td>
                                     </tr>
                                     {% endfor %}

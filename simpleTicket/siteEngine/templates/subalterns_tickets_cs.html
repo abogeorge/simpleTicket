@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}
+
+<script>
+    function backToTickets() {
+        window.location.href = '/home/subalterns_tickets/'
+    }
+</script>
+
+<section class="pricing-page">
+    <div class="container">
+        <div class="pricing-area text-center">
+            <br>
+            <!-- Alerts -->
+            {% if change_succeded == True %}
+            <div class="alert alert-success alert-dismissible" id='alert_success' role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <p class="text-center">You Have Successfully updated the ticket status!</p>
+             </div>
+            {% elif change_succeded == False %}
+            <div class="alert alert-danger alert-dismissible" id='alert_fail' role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                 <p class="text-center">Unable to change the ticket status!</p>
+            </div>
+            {% endif %}
+                <div class="row">
+                    <div class="col-sm-1 plan price-two wow fadeInDown">
+                    </div>
+                    <div class="col-sm-10 plan price-tow wow fadeInDown">
+                        <form action="/home/subalterns_ticket_cs/" method="post" name="contact-form" class="contact-form"> {% csrf_token %}
+                        <ul>
+                            <li class="heading-two">
+                                <h1>Ticket Information</h1>
+                            </li>
+                            <li><b>Owner:</b> {{ ticket.user_type }}</li>
+                            <li><b>Title:</b> {{ ticket.title }}</li>
+                            <li><b>Description:</b> {{ ticket.description }}</li>
+                            <li><b>Comments:</b> {{ ticket.comments }}</li>
+                            <li><b>Priority:</b>
+                                {% if ticket.priority == 0 %}
+                                    Low
+                                {% endif %}
+                                {% if ticket.priority == 1 %}
+                                    Medium
+                                {% endif %}
+                                {% if ticket.priority == 2 %}
+                                    High
+                                    {% endif %}
+                            </li>
+                            <li><b>Status: </b>
+                                {% if ticket.status == 0 %}
+                                    Sent
+                                {% endif %}
+                                {% if ticket.status == 1 %}
+                                    Approved
+                                {% endif %}
+                                {% if ticket.status == 2 %}
+                                    Processing
+                                {% endif %}
+                                {% if ticket.status == 3 %}
+                                    Solved
+                                {% endif %}
+                                {% if ticket.status == 4 %}
+                                    Reopened
+                                {% endif %}
+                            </li>
+                            <li><hr></li>
+                            <li><b>Change Ticket Status</b></li>
+                              <li>
+                                  <div class="form-group">
+                                      <label><b>New Status:&nbsp&nbsp&nbsp</b></label>
+                                        <select id="status" name="status">
+                                            <option value="1" selected="selected">Approved</option>
+                                            <option value="3">Closed</option>
+                                        </select>
+                                  </div>
+                              </li>
+                              <li>
+                                  <div class="form-group">
+                                    <label><b>Additional Comments:</b></label>
+                                    <input type="text" id="comments" name="comments" class="form-control" required="required">
+                                  </div>
+                              </li>
+                              <li>
+                                  <div class="form-group">
+                                    <button type="submit" name="submit" class="btn btn-primary btn-lg" required="required">Submit Changes</button>&nbsp&nbsp&nbsp&nbsp&nbsp
+                                    <a class="btn btn-primary btn-lg" id="id_services" role="button" onclick="backToTickets()">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCancel&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                                  </div>
+                              </li>
+                        </ul>
+                        </form>
+                    </div>
+                    <div class="col-sm-1 plan price-three wow fadeInDown">
+                    </div>
+                </div>
+        </div><!--/Personal Information area-->
+    </div><!--/container-->
+</section><!--/pricing-page-->
+
+{% endblock %}

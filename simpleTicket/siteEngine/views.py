@@ -316,6 +316,33 @@ def subalterns_tickets(request):
         tickets_sub = Ticket.objects.filter(user_type = subaltern).filter(status = 0)
         for ticket_sub in tickets_sub:
             tickets.append(ticket_sub)
-    if len(tickets) == 0:
-        tickets = False
-    return render(request, "subalterns_tickets.html", {'tickets':tickets, 'user_profile':user_profile})
+    # If the view is accessed as a POST request:
+    if request.method == "POST":
+        # Loop to identify the selected ticket
+        for ticket in tickets:
+            if str(ticket.id) in request.POST:
+                # Add ticket to session request
+                request.session['selected_ticket'] = ticket.id
+                # Load change status page if the ticket is identified
+                return render(request, "subalterns_tickets_cs.html", {'ticket':ticket})
+        if len(tickets) == 0:
+            tickets = False
+        # Load the opened tickets page
+        return render(request, "subalterns_tickets.html", {'tickets':tickets, 'user_profile':user_profile})
+    else:
+        if len(tickets) == 0:
+            tickets = False
+        return render(request, "subalterns_tickets.html", {'tickets':tickets, 'user_profile':user_profile})
+
+# Subalterns approve tickets page
+@login_required
+def subalterns_ticket_cs(request):
+    # Retrieving ticket
+    ticket_id = request.session.get('selected_ticket')
+    ticket = Ticket.objects.get(pk=ticket_id)
+    status = request.POST.get("status")
+    comments = request.POST.get("comments")
+    ticket.status = status
+    ticket.comments = comments
+    ticket.save()
+    return render(request, "subalterns_tickets_cs.html", {'ticket':ticket, 'change_succeded':True})

@@ -30,5 +30,7 @@ urlpatterns = [
   url(r'^subalterns/$', views.subalterns, name='subalterns'),
   # Approve subalterns open tickets
   url(r'^subalterns_tickets/$', views.subalterns_tickets, name='subalterns_tickets'),
+  # Change subalterns open tickets status
+  url(r'^subalterns_ticket_cs/$', views.subalterns_ticket_cs, name='subalterns_ticket_cs'),
 
 ]
