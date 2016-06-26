@@ -32,5 +32,8 @@ urlpatterns = [
   url(r'^subalterns_tickets/$', views.subalterns_tickets, name='subalterns_tickets'),
   # Change subalterns open tickets status
   url(r'^subalterns_ticket_cs/$', views.subalterns_ticket_cs, name='subalterns_ticket_cs'),
-
+  # Approve subalterns placed orders
+  url(r'^subalterns_orders/$', views.subalterns_orders, name='subalterns_orders'),
+  # Change subalterns open orders status
+  url(r'^subalterns_order_cs/$', views.subalterns_order_cs, name='subalterns_order_cs'),
 ]

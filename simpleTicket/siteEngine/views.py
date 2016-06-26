@@ -346,3 +346,48 @@ def subalterns_ticket_cs(request):
     ticket.comments = comments
     ticket.save()
     return render(request, "subalterns_tickets_cs.html", {'ticket':ticket, 'change_succeded':True})
+
+# Subalterns Orders
+@login_required
+def subalterns_orders(request):
+    # Retrieving User Profile
+    user = request.user
+    user_profile = user.userprofile
+    # Retrieving subalterns
+    subalterns = get_subalterns(user_profile)
+    # Retrieving open orders for subalterns
+    orders = []
+    for subaltern in subalterns:
+        orders_sub = Order.objects.filter(user_type = subaltern).filter(status = 0)
+        for order_sub in orders_sub:
+            orders.append(order_sub)
+    # If the view is accessed as a POST request:
+    if request.method == "POST":
+        # Loop to identify the selected ticket
+        for order in orders:
+            if str(order.id) in request.POST:
+                # Add order to session request
+                request.session['selected_order'] = order.id
+                # Load change status page if the order is identified
+                return render(request, "subalterns_orders_cs.html", {'order':order})
+        if len(orders) == 0:
+            orders = False
+        # Load the opened orders page
+        return render(request, "subalterns_orders.html", {'orders':orders, 'user_profile':user_profile})
+    else:
+        if len(orders) == 0:
+            orders = False
+        return render(request, "subalterns_orders.html", {'orders':orders, 'user_profile':user_profile})
+
+# Subalterns approve orders page
+@login_required
+def subalterns_order_cs(request):
+    # Retrieving order
+    order_id = request.session.get('selected_order')
+    order = Order.objects.get(pk=order_id)
+    status = request.POST.get("status")
+    comments = request.POST.get("comments")
+    order.status = status
+    order.comments = comments
+    order.save()
+    return render(request, "subalterns_orders_cs.html", {'order':order, 'change_succeded':True})

@@ -17,14 +17,14 @@
         <div class="pricing-area text-center">
                 <br>
                 <div class="row">
-                    <div class="col-sm-12 plan price-two wow fadeInDown">
+                    <div class="col-sm-12 plan price-three wow fadeInDown">
                         <ul>
-                            <li class="heading-two">
-                                <h1>Tickets pending the approval of {{ user_profile }}</h1>
+                            <li class="heading-three">
+                                <h1>Orders pending the approval of {{ user_profile }}</h1>
                             </li>
-                             {% if tickets == False %}
-                                    <li>None of your subalterns has opened any tickets.</li></ul>
-                             {% elif tickets != False %}
+                             {% if orders == False %}
+                                    <li>None of your subalterns has placed any orders.</li></ul>
+                             {% elif orders != False %}
                                 </ul>
                                 <br>
                                 <div class="table-responsive">
@@ -34,6 +34,8 @@
                                             <th style="text-align:center;vertical-align:middle">Owner</th>
                                             <th style="text-align:center;vertical-align:middle">Title</th>
                                             <th style="text-align:center;vertical-align:middle">Description</th>
+                                            <th style="text-align:center;vertical-align:middle">Units</th>
+                                            <th style="text-align:center;vertical-align:middle">Unit Value</th>
                                             <th style="text-align:center;vertical-align:middle">Comments</th>
                                             <th style="text-align:center;vertical-align:middle">Priority</th>
                                             <th style="text-align:center;vertical-align:middle">Status</th>
@@ -41,37 +43,39 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for ticket in tickets %}
+                                        {% for order in orders %}
                                     <tr>
-                                        <td>{{ ticket.user_type }}</td>
-                                        <td>{{ ticket.title }}</td>
-                                        <td>{{ ticket.description }}</td>
-                                        <td>{{ ticket.comments }}</td>
+                                        <td>{{ order.user_type }}</td>
+                                        <td>{{ order.title }}</td>
+                                        <td>{{ order.description }}</td>
+                                        <td>{{ order.units }}</td>
+                                        <td>{{ order.value_per_unit }}</td>
+                                        <td>{{ order.comments }}</td>
                                         <td>
-                                            {% if ticket.priority == 0 %}
+                                            {% if order.priority == 0 %}
                                                 Low
                                             {% endif %}
-                                            {% if ticket.priority == 1 %}
+                                            {% if order.priority == 1 %}
                                                 Medium
                                             {% endif %}
-                                            {% if ticket.priority == 2 %}
+                                            {% if order.priority == 2 %}
                                                 High
                                             {% endif %}
                                         </td>
                                         <td>
-                                            {% if ticket.status == 0 %}
+                                            {% if order.status == 0 %}
                                                 Sent
                                             {% endif %}
-                                            {% if ticket.status == 1 %}
+                                            {% if order.status == 1 %}
                                                 Approved
                                             {% endif %}
-                                            {% if ticket.status == 2 %}
+                                            {% if order.status == 2 %}
                                                 Processing
                                             {% endif %}
-                                            {% if ticket.status == 3 %}
+                                            {% if order.status == 3 %}
                                                 Solved
                                             {% endif %}
-                                            {% if ticket.status == 4 %}
+                                            {% if order.status == 4 %}
                                                 Reopened
                                             {% endif %}
                                         </td>
@@ -79,7 +83,7 @@
                                             <form method="post">
                                             {{ form.as_p }}
                                             {% csrf_token %}
-                                            <button id="{{ ticket.id }}" name={{ ticket.id }} type="submit" class="btn btn-primary">Edit Status</button>
+                                            <button id="{{ order.id }}" name={{ order.id }} type="submit" class="btn btn-primary">Edit Status</button>
                                             </form>
                                         </td>
                                     </tr>
