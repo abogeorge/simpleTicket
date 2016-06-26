@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}
+
+<script>
+    function backToServices() {
+        window.location.href = '/home/services/'
+    }
+</script>
+
+<link rel="stylesheet" href="{% static "styles/jquery.dataTables.min.css" %}">
+<script type="text/javascript" language="javascript" src="{% static "scripts/jquery/jquery.dataTables.min.js" %}"></script>
+
+<section class="pricing-page">
+    <div class="container">
+        <div class="pricing-area text-center">
+                <br>
+                <div class="row">
+                    <div class="col-sm-12 plan price-two wow fadeInDown">
+                        <ul>
+                            <li class="heading-two">
+                                <h1>Tickets pending the approval of {{ user_profile }}</h1>
+                            </li>
+                             {% if tickets == False %}
+                                    <li>Non of your subalterns has opened any tickets.</li></ul>
+                             {% elif tickets != False %}
+                                </ul>
+                                <br>
+                                <div class="table-responsive">
+                                <table class="table table-striped" cellspacing="0" width="100%" align="center" id="data_table">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align:center;vertical-align:middle">Owner</th>
+                                            <th style="text-align:center;vertical-align:middle">Title</th>
+                                            <th style="text-align:center;vertical-align:middle">Description</th>
+                                            <th style="text-align:center;vertical-align:middle">Comments</th>
+                                            <th style="text-align:center;vertical-align:middle">Priority</th>
+                                            <th style="text-align:center;vertical-align:middle">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for ticket in tickets %}
+                                    <tr>
+                                        <td>{{ ticket.user_type }}</td>
+                                        <td>{{ ticket.title }}</td>
+                                        <td>{{ ticket.description }}</td>
+                                        <td>{{ ticket.comments }}</td>
+                                        <td>
+                                            {% if ticket.priority == 0 %}
+                                                Low
+                                            {% endif %}
+                                            {% if ticket.priority == 1 %}
+                                                Medium
+                                            {% endif %}
+                                            {% if ticket.priority == 2 %}
+                                                High
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if ticket.status == 0 %}
+                                                Sent
+                                            {% endif %}
+                                            {% if ticket.status == 1 %}
+                                                Approved
+                                            {% endif %}
+                                            {% if ticket.status == 2 %}
+                                                Processing
+                                            {% endif %}
+                                            {% if ticket.status == 3 %}
+                                                Solved
+                                            {% endif %}
+                                            {% if ticket.status == 4 %}
+                                                Reopened
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                                </div>
+                            {% endif %}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <a class="btn btn-primary btn-lg" id="id_services" role="button" onclick="backToServices()">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGo Back&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                </div>
+        </div><!--/Tickets Information area-->
+    </div><!--/container-->
+</section><!--/pricing-page-->
+
+{% endblock %}

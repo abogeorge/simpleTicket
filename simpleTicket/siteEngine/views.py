@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from .models import Ticket, UserProfile, Order, TicketType, OrderType
 from django.core.mail import send_mail
 from django.template import RequestContext
+from validation_utils import *
+from entities_utils import *
 
 # Home Page
 @login_required
@@ -39,18 +41,11 @@ def myaccount(request):
     # User Auth object
     user = request.user
     # Retrieving User
-    try:
-        user_profile = user.userprofile
-    except UserProfile.DoesNotExist:
-        user_profile = None
+    user_profile = get_profile_for_user(user)
     # Retrieving Tickets
-    tickets = Ticket.objects.filter(user_type = user_profile)
-    if len(tickets) == 0:
-        tickets = False
+    tickets = get_tickets_for_user_profile(user_profile)
     # Retrieving orders
-    orders = Order.objects.filter(user_type = user_profile)
-    if len(orders) == 0:
-        orders = False;
+    orders = get_orders_for_user_profile(user_profile)
     return render(request, "myaccount.html", {'user':user, 'user_profile':user_profile, 'tickets':tickets, 'orders':orders})
 
 # Contact Page
@@ -88,7 +83,11 @@ def handler404(request):
 # Services Page
 @login_required
 def services(request):
-    return render(request, "services.html")
+    # Retrieving User Profile
+    user = request.user
+    user_profile = user.userprofile
+    subalterns = get_subalterns_number(user_profile)
+    return render(request, "services.html", {'subalterns':subalterns})
 
 # Create a Ticket Page
 @login_required
@@ -98,7 +97,7 @@ def create_ticket(request):
         valid = True
         # Collecting Form Data
         title = request.POST.get("title")
-        valid = __validateMinCharLength(title)
+        valid = validateMinCharLength(title)
         description = request.POST.get("description", "-")
         priority = request.POST.get("priority")
         type = request.POST.get("type")
@@ -129,13 +128,6 @@ def create_ticket(request):
             return render(request, "ticketcreate.html", {'sent':False, 'fail_message':fail_message})
     else:
         return render(request, "ticketcreate.html")
-
-# Checks if the
-def __validateMinCharLength(field):
-    if len(field) >= 5:
-        return True
-    else:
-        return False
 
 # Active Tickets
 @login_required
@@ -191,7 +183,7 @@ def create_order(request):
         valid = True
         # Collecting Form Data
         title = request.POST.get("title")
-        valid = __validateMinCharLength(title)
+        valid = validateMinCharLength(title)
         if valid == False:
             fail_message = "Invalid data provided, please try again! The title of the order must be at least 5 " \
                            "characters long."
@@ -204,7 +196,7 @@ def create_order(request):
             value = float(value_str)
         except ValueError:
             valid = False
-        valid = __validateValue(value)
+        valid = validateValue(value)
         if valid == False:
             fail_message = "Invalid data provided, please try again! The price must be a numerical value greater than 0.0."
             return render(request, "ordercreate.html", {'sent':False, 'fail_message':fail_message})
@@ -215,7 +207,7 @@ def create_order(request):
             units = int(units_str)
         except ValueError:
             valid = False
-        valid = __validateUnits(units)
+        valid = validateUnits(units)
         delivery_office = request.POST.get("delivery_office")
         priority = request.POST.get("priority")
         type = request.POST.get("type")
@@ -251,20 +243,6 @@ def create_order(request):
             return render(request, "ordercreate.html", {'sent':False, 'fail_message':fail_message})
     else:
         return render(request, "ordercreate.html")
-
-# validates that the value provided by the user is a float value above 0
-def __validateValue(value):
-    if isinstance(value, float):
-        if value > 0.0:
-            return True
-    return False
-
-# validates that the number of units provided by the user is an integer value above 0
-def __validateUnits(units):
-    if isinstance(units, int):
-        if units > 0:
-            return True
-    return False
 
 # Active Orders
 @login_required
@@ -311,3 +289,33 @@ def closed_orders(request):
             return render(request, "ordersclosed.html", {'user':user, 'user_profile':user_profile, 'orders':orders, 'sent':True})
     else:
         return render(request, "ordersclosed.html", {'user':user, 'user_profile':user_profile, 'orders':orders})
+
+# Subalterns Page
+@login_required
+def subalterns(request):
+    # Retrieving User Profile
+    user = request.user
+    user_profile = user.userprofile
+    # Retrieving subalterns
+    subalterns = get_subalterns(user_profile)
+    if len(subalterns) == 0:
+        subalterns = False
+    return render(request, "subalterns.html", {'subalterns':subalterns, 'user_profile':user_profile})
+
+# Subalterns Tickets
+@login_required
+def subalterns_tickets(request):
+    # Retrieving User Profile
+    user = request.user
+    user_profile = user.userprofile
+    # Retrieving subalterns
+    subalterns = get_subalterns(user_profile)
+    # Retrieving open tickets for subalterns
+    tickets = []
+    for subaltern in subalterns:
+        tickets_sub = Ticket.objects.filter(user_type = subaltern).filter(status = 0)
+        for ticket_sub in tickets_sub:
+            tickets.append(ticket_sub)
+    if len(tickets) == 0:
+        tickets = False
+    return render(request, "subalterns_tickets.html", {'tickets':tickets, 'user_profile':user_profile})

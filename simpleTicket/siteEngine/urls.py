@@ -26,4 +26,9 @@ urlpatterns = [
   url(r'^ordersactive/$', views.active_orders, name='active_orders'),
   # View Closed Orders
   url(r'^ordersclosed/$', views.closed_orders, name='closed_orders'),
+  # View All Subalterns
+  url(r'^subalterns/$', views.subalterns, name='subalterns'),
+  # Approve subalterns open tickets
+  url(r'^subalterns_tickets/$', views.subalterns_tickets, name='subalterns_tickets'),
+
 ]

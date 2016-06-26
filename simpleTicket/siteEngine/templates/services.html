@@ -10,6 +10,7 @@
                 <h2>Services</h2>
             </div>
 
+            <hr>
             <div class="row">
                 <div class="features">
                     <div class="col-md-4 col-sm-6" data-wow-duration="1000ms" data-wow-delay="600ms">
@@ -68,7 +69,42 @@
                 </div><!--/.services-->
             </div><!--/.row-->
 
+            {% if subalterns > 0 %}
+            <hr>
+             <div class="row">
+                <div class="features">
+                    <div class="col-md-4 col-sm-6" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <a href='/home/subalterns/'>
+                            <i class="fa fa-users"></i>
+                            <h2>View Subordinates</h2>
+                            <h3>Manage staff members</h3></a>
+                        </div>
+                    </div><!--/.col-md-4-->
 
+                    <div class="col-md-4 col-sm-6" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <a href='/home/subalterns_tickets/'>
+                            <i class="fa fa-check-square"></i>
+                            <h2>Approve Tickets</h2>
+                            <h3>Approve subordinates active Tickets</h3></a>
+                        </div>
+                    </div><!--/.col-md-4-->
+
+                    <div class="col-md-4 col-sm-6" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+<!--TODO: ADD LINK-->
+                            <a href="#">
+                            <i class="fa fa-share-square-o"></i>
+                            <h2>Approve Orders</h2>
+                            <h3>Approve subordinates active Orders</h3></a>
+                        </div>
+                    </div><!--/.col-md-4-->
+                </div><!--/.services-->
+            </div><!--/.row-->
+            {% endif %}
+
+            <hr>
             <div class="get-started center wow fadeInDown">
                 <h2>Are you experiencing any difficulties?</h2>
                 <p class="lead">If you need any assistance while creating an IT Ticket or placing any kind of order please contact our HelpDesk team.</p>
