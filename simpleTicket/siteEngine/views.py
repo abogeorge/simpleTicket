@@ -346,6 +346,7 @@ def subalterns_ticket_cs(request):
     ticket.status = status
     ticket.comments = comments
     ticket.save()
+    ticket = Ticket.objects.get(pk=ticket_id)
     return render(request, "subalterns_tickets_cs.html", {'ticket':ticket, 'change_succeded':True})
 
 # Subalterns Orders
@@ -391,4 +392,5 @@ def subalterns_order_cs(request):
     order.status = status
     order.comments = comments
     order.save()
+    order = Order.objects.get(pk=order_id)
     return render(request, "subalterns_orders_cs.html", {'order':order, 'change_succeded':True})
