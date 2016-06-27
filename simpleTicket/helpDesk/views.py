@@ -65,8 +65,9 @@ def active_tickets(request):
                 # Add ticket to session request
                 request.session['selected_ticket_hd'] = ticket.id
                 # Load change status page if the ticket is identified
-                # TODO: CHANGE THE STATUS OF THE TICKET AS PROCESSING
-                # TODO: GET THE TICKET AGAIN FROM THE DB
+                # Change the status of the ticket as Processing
+                ticket.status = 2
+                ticket.save()
                 return render(request, "active_tickets_cs.html", {'ticket':ticket, 'user_role':user_role})
         if len(tickets) == 0:
             tickets = False
@@ -88,6 +89,5 @@ def active_tickets_cs(request):
     ticket.status = status
     ticket.comments = comments
     ticket.save()
-    # TODO: GET THE TICKET AGAIN FROM THE DB
-    # TODO: DO THE SAME FOR APPROVAL IF IT WORKS
+    ticket = Ticket.objects.get(pk=ticket_id)
     return render(request, "active_tickets_cs.html", {'ticket':ticket, 'change_succeded':True, 'user_role':user_role})
