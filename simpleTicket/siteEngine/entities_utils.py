@@ -31,3 +31,14 @@ def get_subalterns_number(user_profile):
 def get_subalterns(user_profile):
     subalterns = UserProfile.objects.filter(supervisor_user = user_profile)
     return  subalterns
+
+# Returns the type of the user:
+# 0 - admin; 1 - user; 2 - helpdesk;
+def get_user_type(user_profile):
+    user_role = user_profile.role
+    return user_role.role
+
+# Returns all exmployees from the database
+def get_employees():
+    users = UserProfile.objects.all()
+    return users

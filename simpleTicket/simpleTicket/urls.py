@@ -23,4 +23,5 @@ handler404 = 'siteEngine.views.handler404'
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^home/', include('siteEngine.urls', namespace='siteEngine', app_name='siteEngine')),
+    url(r'^helpd/', include('helpDesk.urls', namespace='helpDesk', app_name='helpDesk')),
 ]

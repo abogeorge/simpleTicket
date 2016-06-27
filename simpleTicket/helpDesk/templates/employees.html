@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}
+
+<script>
+    function backToServices() {
+        window.location.href = '/home/services/'
+    }
+</script>
+
+<link rel="stylesheet" href="{% static "styles/jquery.dataTables.min.css" %}">
+<script type="text/javascript" language="javascript" src="{% static "scripts/jquery/jquery.dataTables.min.js" %}"></script>
+
+<section class="pricing-page">
+    <div class="container">
+        <div class="pricing-area text-center">
+                <br>
+                <div class="row">
+                    <div class="col-sm-12 plan price-two wow fadeInDown">
+                        <ul>
+{% if user_role == 2 %}
+                            <li class="heading-two">
+                                <h1>Company Employees</h1>
+                            </li>
+                             {% if employees == False %}
+                                    <li>Your company does not have any employees.</li></ul>
+                             {% elif employees != False %}
+                                </ul>
+                                <br>
+                                <div class="table-responsive">
+                                <table class="table table-striped" cellspacing="0" width="100%" align="center" id="data_table">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align:center;vertical-align:middle">Full Name</th>
+                                            <th style="text-align:center;vertical-align:middle">Email</th>
+                                            <th style="text-align:center;vertical-align:middle">Phone Number</th>
+                                            <th style="text-align:center;vertical-align:middle">Department</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for sub in employees %}
+                                    <tr>
+                                        <td>{{ sub }}</td>
+                                        <td>{{ sub.user_auth.email }}</td>
+                                        <td>{{ sub.phone_number }}</td>
+                                        <td>{{ sub.department }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                                </div>
+                            {% endif %}
+{% elif user_role != 2 %}
+                            <li class="heading-one">
+                                <h1>Hold on there cowboy! This area is restricted to Help Desk users!</h1>
+                            </li>
+                            </ul>
+{% endif %}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <a class="btn btn-primary btn-lg" id="id_services" role="button" onclick="backToServices()">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGo Back&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                </div>
+        </div><!--/Tickets Information area-->
+    </div><!--/container-->
+</section><!--/pricing-page-->
+
+{% endblock %}

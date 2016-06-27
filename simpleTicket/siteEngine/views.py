@@ -86,8 +86,9 @@ def services(request):
     # Retrieving User Profile
     user = request.user
     user_profile = user.userprofile
+    user_role = get_user_type(user_profile)
     subalterns = get_subalterns_number(user_profile)
-    return render(request, "services.html", {'subalterns':subalterns})
+    return render(request, "services.html", {'subalterns':subalterns, 'user_role':user_role})
 
 # Create a Ticket Page
 @login_required
