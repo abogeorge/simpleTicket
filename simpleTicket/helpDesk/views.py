@@ -47,3 +47,47 @@ def closed_orders(request):
     if len(orders) == 0:
         orders = False
     return render(request, "closed_orders.html", {'orders':orders, 'user_role':user_role})
+
+# All active tickets page
+@login_required
+def active_tickets(request):
+    # Retrieving user type
+    user_role = __get_user_role(request)
+    # Retrieving all Users Profile
+    tickets = Ticket.objects.exclude(status = 0).exclude(status = 3)
+    if len(tickets) == 0:
+        tickets = False
+    # If the view is accessed as a POST request:
+    if request.method == "POST":
+        # Loop to identify the selected ticket
+        for ticket in tickets:
+            if str(ticket.id) in request.POST:
+                # Add ticket to session request
+                request.session['selected_ticket_hd'] = ticket.id
+                # Load change status page if the ticket is identified
+                # TODO: CHANGE THE STATUS OF THE TICKET AS PROCESSING
+                # TODO: GET THE TICKET AGAIN FROM THE DB
+                return render(request, "active_tickets_cs.html", {'ticket':ticket, 'user_role':user_role})
+        if len(tickets) == 0:
+            tickets = False
+        # Load the opened tickets page
+        return render(request, "active_tickets.html", {'tickets':tickets, 'user_role':user_role})
+    else:
+        return render(request, "active_tickets.html", {'tickets':tickets, 'user_role':user_role})
+
+# Change active ticket status
+@login_required
+def active_tickets_cs(request):
+    # Retrieving user type
+    user_role = __get_user_role(request)
+    # Retrieving ticket
+    ticket_id = request.session.get('selected_ticket_hd')
+    ticket = Ticket.objects.get(pk=ticket_id)
+    status = request.POST.get("status")
+    comments = request.POST.get("comments")
+    ticket.status = status
+    ticket.comments = comments
+    ticket.save()
+    # TODO: GET THE TICKET AGAIN FROM THE DB
+    # TODO: DO THE SAME FOR APPROVAL IF IT WORKS
+    return render(request, "active_tickets_cs.html", {'ticket':ticket, 'change_succeded':True, 'user_role':user_role})
