@@ -36,3 +36,14 @@ def closed_tickets(request):
     if len(tickets) == 0:
         tickets = False
     return render(request, "closed_tickets.html", {'tickets':tickets, 'user_role':user_role})
+
+# All closed orders page
+@login_required
+def closed_orders(request):
+    # Retrieving user type
+    user_role = __get_user_role(request)
+    # Retrieving all Users Profile
+    orders = Order.objects.filter(status = 3)
+    if len(orders) == 0:
+        orders = False
+    return render(request, "closed_orders.html", {'orders':orders, 'user_role':user_role})
