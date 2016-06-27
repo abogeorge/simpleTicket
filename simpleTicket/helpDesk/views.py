@@ -91,3 +91,47 @@ def active_tickets_cs(request):
     ticket.save()
     ticket = Ticket.objects.get(pk=ticket_id)
     return render(request, "active_tickets_cs.html", {'ticket':ticket, 'change_succeded':True, 'user_role':user_role})
+
+# All active orders page
+@login_required
+def active_orders(request):
+    # Retrieving user type
+    user_role = __get_user_role(request)
+    # Retrieving all Users Profile
+    orders = Order.objects.exclude(status = 0).exclude(status = 3)
+    if len(orders) == 0:
+        orders = False
+    # If the view is accessed as a POST request:
+    if request.method == "POST":
+        # Loop to identify the selected ticket
+        for order in orders:
+            if str(order.id) in request.POST:
+                # Add ticket to session request
+                request.session['selected_order_hd'] = order.id
+                # Load change status page if the order is identified
+                # Change the status of the order as Processing
+                order.status = 2
+                order.save()
+                return render(request, "active_orders_cs.html", {'order':order, 'user_role':user_role})
+        if len(orders) == 0:
+            orders = False
+        # Load the opened tickets page
+        return render(request, "active_orders.html", {'orders':orders, 'user_role':user_role})
+    else:
+        return render(request, "active_orders.html", {'orders':orders, 'user_role':user_role})
+
+# Change active order status
+@login_required
+def active_orders_cs(request):
+    # Retrieving user type
+    user_role = __get_user_role(request)
+    # Retrieving ticket
+    order_id = request.session.get('selected_order_hd')
+    order = Order.objects.get(pk=order_id)
+    status = request.POST.get("status")
+    comments = request.POST.get("comments")
+    order.status = status
+    order.comments = comments
+    order.save()
+    order = Order.objects.get(pk=order_id)
+    return render(request, "active_orders_cs.html", {'order':order, 'change_succeded':True, 'user_role':user_role})
