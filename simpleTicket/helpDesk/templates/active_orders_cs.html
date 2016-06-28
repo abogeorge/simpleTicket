@@ -29,12 +29,12 @@
             {% endif %}
                 <div class="row">
 {% if user_role == 2 %}
-                    <div class="col-sm-1 plan price-two wow fadeInDown">
+                    <div class="col-sm-1 plan price-three wow fadeInDown">
                     </div>
                     <div class="col-sm-10 plan price-tow wow fadeInDown">
                         <form action="/helpd/active_orders_cs/" method="post" name="contact-form" class="contact-form"> {% csrf_token %}
                         <ul>
-                            <li class="heading-two">
+                            <li class="heading-three">
                                 <h1>Order Information</h1>
                             </li>
                             <li><b>Owner:</b> {{ order.user_type }}</li>
