@@ -44,6 +44,8 @@ ALLOWED_HOSTS = []
 from django.core.urlresolvers import reverse_lazy
 LOGIN_URL = '/home/login/'
 LOGIN_REDIRECT_URL = '/home'
+# Auto Log out after 24 hours (in seconds)
+SESSION_COOKIE_AGE = 86400
 
 # Application definition
 
