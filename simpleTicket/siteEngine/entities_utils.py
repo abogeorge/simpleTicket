@@ -42,3 +42,15 @@ def get_user_type(user_profile):
 def get_employees():
     users = UserProfile.objects.all()
     return users
+
+# Returns the id of the ticket with the specified title
+def get_ticket_id_from_title(name):
+    tickets = Ticket.objects.all()
+    print ("\n\n\n")
+    print ("Tickets: " + str(tickets))
+    print ("Title: " + name)
+    for ticket in tickets:
+        print ("Ticket " + str(ticket.id) + ": " +ticket.title)
+        if ticket.title == name:
+            return ticket.id
+    return False
