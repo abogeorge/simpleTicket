@@ -1,0 +1,52 @@
+=== GENERAL TESTS ===
+= GENERAL =
+- LogIn
+.\manage.py test siteEngine.tests.SiteEngineTests.test1_login
+- Wrong LogIn
+.\manage.py test siteEngine.tests.SiteEngineTests.test2_bad_login
+- LogOut
+.\manage.py test siteEngine.tests.SiteEngineTests.test3_logout
+- MyAccount
+.\manage.py test siteEngine.tests.SiteEngineTests.test4_myaccount
+- Services
+.\manage.py test siteEngine.tests.SiteEngineTests.test5_services
+- Contact
+.\manage.py test siteEngine.tests.SiteEngineTests.test6_contact
+
+= USER =
+- LogIn -> Services -> Create Ticket
+.\manage.py test siteEngine.tests.SiteEngineTests.test7_user_create_ticket
+- LogIn -> Services -> Active Tickets
+.\manage.py test siteEngine.tests.SiteEngineTests.test8_user_active_tickets
+- LogIn -> Services -> Create Order
+.\manage.py test siteEngine.tests.SiteEngineTests.test9_user_create_order
+- LogIn -> Services -> Active Orders
+.\manage.py test siteEngine.tests.SiteEngineTests.test10_user_active_orders
+
+= SUPERVISOR =
+- LogIn -> Services -> View Subordinates
+.\manage.py test siteEngine.tests.SiteEngineTests.test11_supervisor_subordinates
+- LogIn -> Services -> Approve Tickets
+.\manage.py test siteEngine.tests.SiteEngineTests.test12_supervisor_approve_tickets
+- LogIn -> Services -> Approve Orders
+.\manage.py test siteEngine.tests.SiteEngineTests.test13_supervisor_approve_orders
+
+= HELPDESK =
+- LogIn -> Services -> Employees List
+.\manage.py test siteEngine.tests.SiteEngineTests.test14_helpdesk_employees
+- LogIn -> Services -> Open Tickets
+.\manage.py test siteEngine.tests.SiteEngineTests.test15_helpdesk_solve_ticket
+- LogIn -> Services -> Closed Tickets
+.\manage.py test siteEngine.tests.SiteEngineTests.test16_helpdesk_solved_tickets
+- LogIn -> Services -> Open Orders
+.\manage.py test siteEngine.tests.SiteEngineTests.test17_helpdesk_solve_order
+- LogIn -> Services -> Closed Orders
+.\manage.py test siteEngine.tests.SiteEngineTests.test18_helpdesk_solved_orders
+
+=== WORKFLOW TESTS ===
+- Log In User -> Index -> Services -> Create Ticket -> Services -> Active Ticket -> Log Out ->
+  Log In Supervisor > Index -> Services -> View Subordinates -> Services -> Aprove Tickets -> Approve -> Approve Tickets -> Log Out ->
+  Log In HelpDesk -> Index -> Services -> Open Tickets -> Process Ticket -> Open Tickets -> Closed Tickets -> Log Out ->
+  Log In User -> Index -> Services -> Closed Tickets
+.\manage.py test siteEngine.workflow_tests.SiteEngineWorkflowTests.test1_ticket_workflow
+  

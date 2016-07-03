@@ -28,7 +28,7 @@ class SiteEngineTests(StaticLiveServerTestCase):
     @classmethod
     def tearDownClass(cls):
         print (" ... Destroying Resources")
-        #cls.driver.quit()
+        cls.driver.quit()
         super(SiteEngineTests, cls).tearDownClass()
 
     # --- Utility methods ---
@@ -308,7 +308,7 @@ class SiteEngineTests(StaticLiveServerTestCase):
         # Asserting True Services page text information
         self.assertTrue(self.__is_text_present("Manage staff members"))
         driver.find_element_by_name('approve_tickets').click()
-        # Asserting True subordinates tickets page text information
+        # Asserting True open tickets page text information
         self.assertTrue(self.__is_text_present("Tickets pending the approval of George Rus"))
         self.assertTrue(self.__is_text_present("Cristina George"))
         self.assertTrue(self.__is_text_present("Office License"))
@@ -533,3 +533,4 @@ class SiteEngineTests(StaticLiveServerTestCase):
         self.assertTrue(self.__is_text_present("Improve office lighting"))
         self.assertTrue(self.__is_text_present("Solved"))
         self.assertTrue(self.__is_text_present("Medium"))
+        users = entities_utils.get_employees()
