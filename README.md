@@ -12,5 +12,5 @@
 
 #### Runing the application
 * Create a MySQL local connection or get the connection data for a remote one. 
-* Go to * simpleTicket/simpleTicket/settings.py * and edit the DATABASE section to match the connection data from the previous step.
+* Go to *simpleTicket/simpleTicket/settings.py* and edit the DATABASE section to match the connection data from the previous step.
 #### Runing the Selenium test suites
