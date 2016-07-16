@@ -1,6 +1,6 @@
 ## Description
 --------------
-The project contains a simple IT style ticketing system build using the Django framework. The application supports four types of users. The **simple user** can create a ticket or an order, can view the status of the open tickets/orders and can view a report of all closed tickets/orders and reopen them if something went wrong. The **supervisor** is a user that has other users as subordinates. In addition to the users capabilities, the supervisor can approve or disapprove the subordinates opened tickets/orders. The **help desk operator** has a different set of tools. He can view the contact data for all the employees, process and solve approved/reopened tickets/orders and can view a report of all closed tickets. The **administrator** has access to all CRUD functionalities involving the users and help desk operators accounts, including setting the hierarchical relations in the company.
+The project contains a simple IT style ticketing system build using the Django framework. The application supports four types of users. The **simple user** can create a ticket or an order, can view the status of the open tickets/orders and can view a report of all closed tickets/orders and reopen them if something went wrong. The **supervisor** is a user that has other users as subordinates. In addition to the users capabilities, the supervisor can approve or disapprove the subordinates opened tickets/orders. The **help desk operator** has a different set of tools. He can view the contact data for all the employees, process and solve approved/reopened tickets/orders and can view a report of all closed tickets. The **administrator** has access to all CRUD functionalities involving the users and help desk operators accounts, including setting the hierarchical relations in the company. Every ticket and order passes through the same life cycle **created** by the user, **approved** by the supervisor, **processing** and **solved** by the helpdesk operator or **reopened** by the initial user.
 
 ## Setup
 --------
@@ -16,3 +16,5 @@ The project contains a simple IT style ticketing system build using the Django f
 * Using a command prompt window go to *simpleTicket/* and type <code>python manage.py runserver</code>. Access the prompted address. 
 
 #### Runing the Selenium test suites
+* Install Selenium.
+* Go to *simpleTicket/* and run the commands contained in the *simpleTicket/Docs/Tests.txt* file for a specific functional test.
